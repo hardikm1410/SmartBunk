@@ -1,0 +1,31 @@
+const daysContainer = document.querySelector(".days"),
+    NextMonth = document.querySelector(".next-btn"),
+    PrevMonth = document.querySelector(".prev-btn"),
+    month= document.querySelector(".month");
+
+const months=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+
+const days=["Mon","Tue","Wednesday","Thursday","Friday","Saturday","Sunday"];
+
+const date= new Date();
+let currentMonth = date.getMonth()
+
+let currentYear = date.getFullYear()
+
+function renderCalendar() {
+    // get prev, current and next month days
+    date.setDate(1);
+    const firstDay= new Date(currentYear, currentMonth, 1);
+    const lastDay= new Date(currentYear, currentMonth+ 1,0);
+    const lastDayIndex= lastDay.getDay();
+    const lastDayDate= lastDay.getDate();
+    const prevLastDay= new Date(currentYear, currentMonth, 0);
+    const prevLastDayDate= prevLastDay.getDate();
+    const nextDays = 7- lastDayIndex -1;
+
+    
+    month.innerHTML= `${months[currentMonth]} ${currentYear}`;
+
+}
+
+renderCalendar();
